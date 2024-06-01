@@ -1,16 +1,14 @@
 <img src="./.assets/christmas_ferris.png" width="164">
 
-# 🎄 Advent of Code 2015.
+# 🎄 Advent of Code 2015
 
-Solutions for [Advent of Code](https://adventofcode.com/) in [Rust](https://www.rust-lang.org/).
+Solutions for [Advent of Code](https://adventofcode.com/2015) in [Rust](https://www.rust-lang.org/).
 
 <!--- advent_readme_stars table --->
 
 <!--- benchmarking table --->
 
 ---
-
-## Template setup
 
 ✨ You can start solving puzzles now! Head to the [Usage section](#usage) to see how to use this template. If you like, you can configure [some optional features](#optional-template-features).
 
@@ -39,7 +37,7 @@ Every [solution](https://github.com/fspoettel/advent-of-code-rust/blob/main/src/
 
 ### ➡️ Download input for a day
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > This requires [installing the aoc-cli crate](#configure-aoc-cli-integration).
 
 You can automatically download puzzle input and description by either appending the `--download` flag to `scaffold` (e.g. `cargo scaffold 4 --download`) or with the separate `download` command:
@@ -200,38 +198,9 @@ cargo clippy
 
 ### Configure aoc-cli integration
 
-1. Install [`aoc-cli`](https://github.com/scarvalhojr/aoc-cli/) via cargo: `cargo install aoc-cli --version 0.12.0`
 2. Create the file `<home_directory>/.adventofcode.session` and paste your session cookie into it. To retrieve the session cookie, press F12 anywhere on the Advent of Code website to open your browser developer tools. Look in _Cookies_ under the _Application_ or _Storage_ tab, and copy out the `session` cookie value. [^1]
 
 Once installed, you can use the [download command](#download-input--description-for-a-day), the read command, and automatically submit solutions via the [`--submit` flag](#submitting-solutions).
-
-### Automatically track ⭐️ progress in the readme
-
-This template includes [a Github action](https://github.com/k2bd/advent-readme-stars) that automatically updates the readme with your advent of code progress.
-
-To enable it, complete the following steps:
-
-#### 1. Create a private leaderboard
-
-Go to the leaderboard page of the year you want to track and click _Private Leaderboard_. If you have not created a leaderboard yet, create one by clicking _Create It_. Your leaderboard should be accessible under `https://adventofcode.com/{year}/leaderboard/private/view/{aoc_user_id}`.
-
-#### 2. Set repository secrets
-
-Go to the _Secrets_ tab in your repository settings and create the following secrets:
-
--   `AOC_USER_ID`: Go to [this page](https://adventofcode.com/settings) and copy your user id. It's the number behind the `#` symbol in the first name option. Example: `3031`.
--   `AOC_YEAR`: the year you want to track. Example: `2021`.
--   `AOC_SESSION`: an active session[^2] for the advent of code website. To get this, press F12 anywhere on the Advent of Code website to open your browser developer tools. Look in your Cookies under the Application or Storage tab, and copy out the `session` cookie.
-
-Go to the _Variables_ tab in your repository settings and create the following variable:
-
--   `AOC_ENABLED`: This variable controls whether the workflow is enabled. Set it to `true` to enable the progress tracker. After you complete AoC or no longer work on it, you can set this to `false` to disable the CI.
-
-✨ You can now run this action manually via the _Run workflow_ button on the workflow page. If you want the workflow to run automatically, uncomment the `schedule` section in the `readme-stars.yml` workflow file or add a `push` trigger.
-
-### Enable code formatting / clippy checks in the CI
-
-Uncomment the respective sections in the `ci.yml` workflow.
 
 ### Use DHAT to profile heap allocations
 
@@ -259,15 +228,6 @@ You can pass the report a tool like [dh-view](https://nnethercote.github.io/dh_v
 2.  Set breakpoints in your code. [^3]
 3.  Click _Debug_ next to the unit test or the _main_ function. [^4]
 4.  The debugger will halt your program at the specific line and allow you to inspect the local stack. [^5]
-
-## Useful crates
-
--   [itertools](https://crates.io/crates/itertools): Extends iterators with extra methods and adaptors. Frequently useful for aoc puzzles.
--   [regex](https://crates.io/crates/regex): Official regular expressions implementation for Rust.
-
-A curated list of popular crates can be found on [blessred.rs](https://blessed.rs/crates).
-
-Do you have aoc-specific crate recommendations? [Share them!](https://github.com/fspoettel/advent-of-code-rust/edit/main/README.md)
 
 ## Common pitfalls
 
