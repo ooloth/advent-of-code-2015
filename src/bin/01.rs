@@ -10,8 +10,22 @@ pub fn part_one(input: &str) -> Option<i32> {
     }))
 }
 
-pub fn part_two(_input: &str) -> Option<u32> {
-    None
+pub fn part_two(input: &str) -> Option<i32> {
+    Some(
+        input
+            .chars()
+            .scan(0, |floor, char| {
+                *floor += match char {
+                    '(' => 1,
+                    ')' => -1,
+                    _ => 0,
+                };
+                Some(*floor)
+            })
+            .position(|floor| floor == -1)
+            .unwrap() as i32
+            + 1,
+    )
 }
 
 #[cfg(test)]
@@ -31,17 +45,23 @@ mod tests {
             (")))", -3),     // -3
             (")())())", -3), // -3
         ];
+
         for (input, expected) in examples {
             let result = part_one(input);
             assert_eq!(result, Some(expected));
         }
-        // let result = part_one(&advent_of_code::template::read_file("examples", DAY));
-        // assert_eq!(result, None);
     }
 
     #[test]
     fn test_part_two() {
-        let result = part_two(&advent_of_code::template::read_file("examples", DAY));
-        assert_eq!(result, None);
+        let examples = vec![
+            (")", 1),     // 1
+            ("()())", 5), // 5
+        ];
+
+        for (input, expected) in examples {
+            let result = part_two(input);
+            assert_eq!(result, Some(expected));
+        }
     }
 }
