@@ -9,6 +9,7 @@ Solutions for [Advent of Code](https://adventofcode.com/2015) in [Rust](https://
 
 | Day | Part 1 | Part 2 |
 | :---: | :---: | :---: |
+| [Day 1](https://adventofcode.com/2015/day/1) | ⭐ |   |
 <!--- advent_readme_stars table --->
 
 <!--- benchmarking table --->
