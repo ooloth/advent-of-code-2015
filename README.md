@@ -20,7 +20,7 @@ Solutions for [Advent of Code](https://adventofcode.com/2015) in [Rust](https://
 
 ## Usage
 
-### Scaffold a day
+### Scaffolding files and downloading puzzle input
 
 ```sh
 cargo scaffold 1 --download   # Create scaffolding for day 1 and download puzzle input
@@ -37,14 +37,14 @@ cargo test --bin 01
 cargo test --bin 01 part_one
 ```
 
-### Use VS Code to debug your code
+### Debugging
 
-1. Install [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) and [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb)
+1. Install the `rust-analyzer` and `CodeLLDB` extensions
 2. Set breakpoints in your code
 3. Click _Debug_ next to the unit test or the _main_ function
 4. The debugger will halt your program at the specific line and allow you to inspect the local stack
 
-### Run solutions for a day
+### Running and submitting
 
 ```sh
 cargo solve 1              # Run day 1 solution against real puzzle inputs
@@ -74,12 +74,14 @@ cargo fmt
 cargo clippy
 ```
 
+## Session cookie for AOC CLI
+
+1. Copy the `session` 🍪 from the [AOC website](https://adventofcode.com) (you'll find it under _Cookies_ in the _Application_ or _Storage_ tab)
+2. Create a `$HOME/.adventofcode.session` file and paste the 🍪 there
+3. Create an `AOC_SESSION` repo secret and paste the 🍪 there as well (Settings -> Secrets -> New repository secret)
+4. When the 🍪 expires, repeat steps 1-3, replacing the old value with the new one
+
 ## Common pitfalls
 
+- **Whitespace in input:** Make sure the input file has no leading or trailing whitespace, including no newline at the end of the file.
 -  **Integer overflows:** This template uses 32-bit integers by default because it is generally faster - for example when packed in large arrays or structs - than using 64-bit integers everywhere. For some problems, solutions for real input might exceed 32-bit integer space. While this is checked and panics in `debug` mode, integers [wrap](https://doc.rust-lang.org/book/ch03-02-data-types.html#integer-overflow) in `release` mode, leading to wrong output when running your solution.
-
-## Session cookie
-
-1. The session cookie might expire after a while (~1 month) which causes the downloads to fail. To fix this issue, refresh the `.adventofcode.session` file.
-2. The session cookie might expire after a while (~1 month) which causes the automated workflow to fail. To fix this issue, refresh the AOC_SESSION secret.
-2. Create the file `$HOME/.adventofcode.session` and paste your session cookie into it. To retrieve the session cookie, press F12 anywhere on the Advent of Code website to open your browser developer tools. Look in _Cookies_ under the _Application_ or _Storage_ tab, and copy out the `session` cookie value. [^1]
