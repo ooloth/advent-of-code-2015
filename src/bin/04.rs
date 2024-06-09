@@ -17,6 +17,20 @@ pub fn part_one(input: &str) -> Option<u32> {
     )
 }
 
+pub fn part_two(input: &str) -> Option<u32> {
+    Some(
+        (0..u32::MAX)
+            .into_iter()
+            .find(|num| {
+                let combined = format!("{input}{num}");
+                let hash = Md5::digest(combined.as_bytes());
+                let hex_hash = format!("{:x}", hash);
+                hex_hash.starts_with("000000")
+            })
+            .unwrap(),
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -30,4 +44,7 @@ mod tests {
             assert_eq!(result, expected);
         }
     }
+
+    #[test]
+    fn test_part_two() {}
 }
