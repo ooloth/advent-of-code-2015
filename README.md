@@ -19,88 +19,22 @@ Solutions for [Advent of Code](https://adventofcode.com/2015) in [Rust](https://
 
 ## Usage
 
-## Scaffold a day
-
-You can automatically download puzzle input and description by either appending the `--download` flag to `scaffold` (e.g. `cargo scaffold 4 --download`) or with the separate `download` command:
+### Scaffold a day
 
 ```sh
-# example: `cargo scaffold 1 --download`
-cargo scaffold <day>
-cargo scaffold <day> --download
-cargo download <day>
+cargo scaffold 1 --download   # Create scaffolding for day 1 and download puzzle input
+cargo scaffold 1              # Create scaffolding for day 1
+cargo download 1              # Download puzzle input for day 1
+cargo read 1                  # Read puzzle description for day 1
 ```
 
-> [!TIP]
-> If a day has multiple example inputs, you can use the `read_file_part()` helper in your tests instead of `read_file()`. If this e.g. applies to day 1, you can create a second example file `01-2.txt` and invoke the helper like `let result = part_two(&advent_of_code::template::read_file_part("examples", DAY, 2));`. This supports an arbitrary number of example files.
-
-## Read puzzle description
-
-```sh
-# example: `cargo read 1`
-cargo read <day>
-```
-
-## Linting and formatting
-
-```sh
-cargo fmt
-cargo clippy
-```
-
-## Testing
+### Testing
 
 ```sh
 cargo test
-
-# example: cargo test --bin 01
-cargo test --bin <day>
-
-# example: cargo test --bin 01 part_one
-cargo test --bin <day> <part>
+cargo test --bin 01
+cargo test --bin 01 part_one
 ```
-
-## Benchmarking
-
-You can benchmark one day or all days and store timings in the readme. The runner will run your code between 10 and 10,000 times, depending on execution time of first execution, and print the average.
-
-```sh
-# example: `cargo time 8 --store`
-cargo time <day> --store
-cargo time --all --store
-```
-
-## Run solutions for a day
-
-If you are not only interested in the runtime of your solution, but also its heap allocation profile, you can use the template's [DHAT](https://valgrind.org/docs/manual/dh-manual.html) integration to analyze it. In order to activate DHAT, call the `solve` command with the `--dhat` flag.
-
-```sh
-# example: `cargo solve 01`
-# example: `cargo solve 1 --dhat`
-cargo solve <day>
-cargo solve <day> <part>
-cargo solve <day> --dhat
-cargo solve <day> --submit <part>
-```
-
-The `solve` command runs your solution against real puzzle inputs. To run an optimized build of your code, append the `--release` flag as with any other rust program.
-
-## Submitting solutions
-
-Append the `--submit <part>` option to the `solve` command to submit your solution for checking.
-
-```sh
-# Run all solutions sequentially
-cargo all
-
-# Run all solutions sequentially with optimized build
-cargo all --release
-```
-
-## Optional template features
-
-The command will output some basic stats to the command-line and generate a `dhat-heap.json` report in the repo root directory.
-
-You can pass the report a tool like [dh-view](https://nnethercote.github.io/dh_view/dh_view.html) to view a detailed breakdown of heap allocations.
 
 ### Use VS Code to debug your code
 
@@ -108,6 +42,36 @@ You can pass the report a tool like [dh-view](https://nnethercote.github.io/dh_v
 2. Set breakpoints in your code. [^3]
 3. Click _Debug_ next to the unit test or the _main_ function. [^4]
 4. The debugger will halt your program at the specific line and allow you to inspect the local stack. [^5]
+
+### Run solutions for a day
+
+```sh
+cargo solve 1              # Run day 1 solution against real puzzle inputs
+cargo solve 1 2            # Run day 1, part 2 solution against real puzzle inputs
+cargo solve 1 2 --release  # Run day 1, part 2 solution against real puzzle inputs with an optimized build
+cargo all                  # Run all solutions sequentially
+cargo all --release        # Run all solutions sequentially with optimized build
+cargo solve 1 --submit 2   # Submit day 1, part 2 solution
+```
+
+### Benchmarking
+
+```sh
+cargo time 1              # Analyze day 1 runtime by running it 10 to 10,000 times (depending on its execution time) and print the average
+cargo time --all          # Analyze all days' runtimes
+cargo solve 1 --dhat      # Analyze day 1 heap allocations with DHAT (https://valgrind.org/docs/manual/dh-manual.html)
+cargo time 1 --store      # Store day 1 timings in the readme
+cargo time --all --store  # Store all timings in the readme
+```
+
+The `--dhat` command will output some basic stats to the command-line and generate a `dhat-heap.json` report in the repo root directory. You can pass the report a tool like [dh-view](https://nnethercote.github.io/dh_view/dh_view.html) to view a detailed breakdown of heap allocations.
+
+### Linting and formatting
+
+```sh
+cargo fmt
+cargo clippy
+```
 
 ## Common pitfalls
 
