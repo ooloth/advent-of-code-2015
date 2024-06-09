@@ -23,8 +23,20 @@ pub fn part_one(input: &str) -> Option<u32> {
     )
 }
 
-pub fn part_two(_input: &str) -> Option<u32> {
-    None
+pub fn part_two(input: &str) -> Option<u32> {
+    Some(
+        input
+            .lines()
+            .map(|line| {
+                let mut dimensions: Vec<u32> =
+                    line.split('x').map(|s| s.parse::<u32>().unwrap()).collect();
+
+                dimensions.sort();
+
+                2 * (dimensions[0] + dimensions[1]) + dimensions[0] * dimensions[1] * dimensions[2]
+            })
+            .sum(),
+    )
 }
 
 #[cfg(test)]
@@ -33,13 +45,13 @@ mod tests {
 
     #[test]
     fn test_part_one() {
-        let examples = vec![
+        let dimensions_to_square_feet_of_wrapping_paper = vec![
             ("2x3x4", Some(58)),
             ("1x1x10", Some(43)),
             ("2x3x4\n1x1x10", Some(58 + 43)),
         ];
 
-        for (input, expected) in examples {
+        for (input, expected) in dimensions_to_square_feet_of_wrapping_paper {
             let result = part_one(input);
             assert_eq!(result, expected);
         }
@@ -47,13 +59,13 @@ mod tests {
 
     #[test]
     fn test_part_two() {
-        let examples = vec![
-            ("1-3 a: abcde", Some(1)),
-            ("1-3 b: cdefg", Some(0)),
-            ("2-9 c: ccccccccc", Some(1)),
+        let dimensions_to_feet_of_ribbon = vec![
+            ("2x3x4", Some((2 + 2 + 3 + 3) + (2 * 3 * 4))),   // 34
+            ("1x1x10", Some((1 + 1 + 1 + 1) + (1 * 1 * 10))), // 14
+            ("2x3x4\n1x1x10", Some(34 + 14)),                 // 48
         ];
 
-        for (input, expected) in examples {
+        for (input, expected) in dimensions_to_feet_of_ribbon {
             let result = part_two(input);
             assert_eq!(result, expected);
         }
