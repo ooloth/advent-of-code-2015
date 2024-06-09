@@ -31,13 +31,7 @@ pub fn part_two(input: &str) -> Option<u32> {
     let mut robot = (0, 0);
 
     input.chars().enumerate().for_each(|(i, c)| {
-        let is_santas_move = i % 2 == 0;
-
-        let mover = if is_santas_move {
-            &mut santa
-        } else {
-            &mut robot
-        };
+        let mover = if i % 2 == 0 { &mut santa } else { &mut robot };
 
         match c {
             '^' => mover.1 += 1,
