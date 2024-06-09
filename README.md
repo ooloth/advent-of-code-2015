@@ -38,10 +38,10 @@ cargo test --bin 01 part_one
 
 ### Use VS Code to debug your code
 
-1. Install [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) and [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb).
-2. Set breakpoints in your code. [^3]
-3. Click _Debug_ next to the unit test or the _main_ function. [^4]
-4. The debugger will halt your program at the specific line and allow you to inspect the local stack. [^5]
+1. Install [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) and [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb)
+2. Set breakpoints in your code
+3. Click _Debug_ next to the unit test or the _main_ function
+4. The debugger will halt your program at the specific line and allow you to inspect the local stack
 
 ### Run solutions for a day
 
@@ -57,11 +57,11 @@ cargo solve 1 --submit 2   # Submit day 1, part 2 solution
 ### Benchmarking
 
 ```sh
-cargo time 1              # Analyze day 1 runtime by running it 10 to 10,000 times (depending on its execution time) and print the average
-cargo time --all          # Analyze all days' runtimes
+cargo time 1              # Run day 1 10-10K times (depending on execution time) and print the average runtime
+cargo time --all          # Print the average runtime for all days
 cargo solve 1 --dhat      # Analyze day 1 heap allocations with DHAT (https://valgrind.org/docs/manual/dh-manual.html)
-cargo time 1 --store      # Store day 1 timings in the readme
-cargo time --all --store  # Store all timings in the readme
+cargo time 1 --store      # Add day 1 timings to the readme
+cargo time --all --store  # Add all timings to the readme
 ```
 
 The `--dhat` command will output some basic stats to the command-line and generate a `dhat-heap.json` report in the repo root directory. You can pass the report a tool like [dh-view](https://nnethercote.github.io/dh_view/dh_view.html) to view a detailed breakdown of heap allocations.
