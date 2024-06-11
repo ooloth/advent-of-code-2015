@@ -52,12 +52,12 @@ pub fn part_two(input: &str) -> Option<u32> {
                         .find(|&&(p, index)| p == pair && i - index > 1)
                     {
                         Some(_) => {
-                            // If so, this string is nice, so we can break and return early
+                            // If so, this string is nice and we can return early
                             has_repeating_non_overlapping_pair = true;
                             break;
                         }
                         _ => {
-                            // Otherwise, add this pair to the list of pairs and their indices and continue
+                            // Otherwise, add this pair to the list and continue
                             pairs_with_indices.push((pair, i));
                         }
                     }
